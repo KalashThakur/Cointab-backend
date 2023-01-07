@@ -35,7 +35,6 @@ userRoute.post("/", async (req,res) => {
     }catch(err){
         console.log('err:', err)
         res.send(err)
-
     }
 
     
@@ -43,19 +42,12 @@ userRoute.post("/", async (req,res) => {
 
 
 // **********DELETE*********
-userRoute.delete("/:id", async(req, res) => {
-    const {id} = req.params;
-    const {userId} = req.body;
+userRoute.delete("/delete", async(req, res) => {
 
-   const note = await NotesModel.findOne({_id: note_id})
    
-   if(note.userId === userId){
-    const deletedNote = await NotesModel.findOneAndDelete({_id: note_id})
-    return res.send({"message": "deletedNote data"})
-   }
-   else{
-    return res.send("Not authorized")
-   }
+    const deletedData = await UserModel.deleteMany({})
+    await deletedData.save();
+    return res.send({"message": "deleted data"})
 
 });
 
