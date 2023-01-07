@@ -16,7 +16,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 
 // **********POST*********
-userRoute.get("/", async (req,res) => {
+userRoute.post("/", async (req,res) => {
     // const payload = req.body
     // const new_todo = new UserModel(payload)
     // await new_todo.save()
@@ -27,6 +27,9 @@ userRoute.get("/", async (req,res) => {
     try{
         const response = await fetch('https://randomuser.me/api/');
         const data = await response.json();
+        const allData = new UserModel(data)
+        await allData.save();
+
         res.send(data)
         console.log(data);
     }catch(err){
