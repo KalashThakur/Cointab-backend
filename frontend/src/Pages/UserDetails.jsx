@@ -13,7 +13,7 @@ const UserDetails = () => {
 
   let getData = async () => {
     try {
-      let res = await fetch("http://localhost:8080/user");
+      let res = await fetch("https://cointab-userdetails.onrender.com/user");
       let data = await res.json();
       console.log('data:', data)
       setData([...data]);

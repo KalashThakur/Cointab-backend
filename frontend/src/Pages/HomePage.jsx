@@ -11,13 +11,13 @@ const HomePage = () => {
   }
 
   const handleFetch = () => {
-    axios.post("http://localhost:8080/user")
+    axios.post("https://cointab-userdetails.onrender.com/user")
     .then((res) => console.log(res.data))
     .catch((e) => console.log(e))
   }
 
   const handleDelete = () => {
-    axios.delete("http://localhost:8080/user/delete")
+    axios.delete("https://cointab-userdetails.onrender.com/user/delete")
     .then((res) => console.log(res.data))
     .catch((e) => console.log(e))
   }
