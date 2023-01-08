@@ -3,8 +3,9 @@
 
 const {Router} = require("express");
 const {UserModel} = require('../Models/UserModel')
+let axios = require("axios");
+axios = axios.default
 const userRoute = Router();
-
 
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
@@ -16,7 +17,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 
 // **********POST*********
-userRoute.post("/", async (req,res) => {
+userRoute.get("/", async (req,res) => {
     // const payload = req.body
     // const new_todo = new UserModel(payload)
     // await new_todo.save()
@@ -24,20 +25,28 @@ userRoute.post("/", async (req,res) => {
     // const results = await TodoModel.find()
     // res.send(results)
 
-    try{
-        const response = await fetch('https://randomuser.me/api/');
-        const data = await response.json();
-        const allData = new UserModel(data)
-        await allData.save();
-
-        res.send(data)
-        console.log(data);
-    }catch(err){
-        console.log('err:', err)
-        res.send(err)
-    }
-
     
+        // axios.get('https://randomuser.me/api/')
+        // .then((res) => {
+        //     console.log(res.data)
+        //     res.send(res.data)
+        //     // const details = new UserModel(res.data)
+        //     // details.save();
+        // })
+        // .catch((err) => console.log(err))
+
+        fetch('https://randomuser.me/api/', {
+            method: 'GET',
+            Headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err))
+        // const data = await response.json();
+        // const allData = new UserModel(data)
+        // await allData.save();
 });
 
 
