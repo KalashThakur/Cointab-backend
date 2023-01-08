@@ -1,55 +1,69 @@
 const mongoose = require("mongoose");
+// const userSchema=new mongoose.Schema({
+//     gender: 'female',
+//       name: [Object],
+//       location: [Object],
+//       email: 'mandy.george@example.com',
+//       login: [Object],
+//       dob: [Object],
+//       registered: [Object],
+//       phone: '021-147-5692',
+//       cell: '081-146-9111',
+//       id: [Object],
+//       picture: [Object],
+//       nat: 'IE'
+// })
 
 const userSchema = new mongoose.Schema({
     id: Number,
-    gender: {type: String, required: true},
+    gender: {type: String},
     name: {
-        title: {type: String, required: true},
-        first: {type: String, required: true},
-        last: {type: String, required: true},
+        title: {type: String},
+        first: {type: String},
+        last: {type: String},
     },
     location: {
         street: {
-            number: {type: Number, required: true},
-            name: {type: String, required: true}, 
+            number: {type: Number},
+            name: {type: String}, 
         },
-        city: {type: String, required: true},
-        state: {type: String, required: true},
-        country: {type: String, required: true},
-        postcode: {type: String, required: true},
+        city: {type: String},
+        state: {type: String},
+        country: {type: String},
+        postcode: {type: String},
         coordinates: {
-            latitude: {type: String, required: true},
-            longitude: {type: String, required: true},
+            latitude: {type: String},
+            longitude: {type: String},
         },
         timezone: {
-            offset: {type: String, required: true},
-            description: {type: String, required: true},
+            offset: {type: String},
+            description: {type: String},
         }
     },
     email: String,
     login: {
-        uuid: {type: String, required: true},
-        username: {type: String, required: true},
-        password: {type: String, required: true},
-        salt: {type: String, required: true},
-        md5: {type: String, required: true},
-        sha1: {type: String, required: true},
-        sha256: {type: String, required: true},
+        uuid: {type: String},
+        username: {type: String},
+        password: {type: String},
+        salt: {type: String},
+        md5: {type: String},
+        sha1: {type: String},
+        sha256: {type: String},
     },
     dob: {
-        date: {type: Date, required: true},
-        age: {type: Number, required: true}
+        date: {type: Date},
+        age: {type: Number}
     },
     registered: {
-        date: {type: Date, required: true},
-        age: {type: Number, required: true}
+        date: {type: Date},
+        age: {type: Number}
     },
-    phone: {type: String, required: true},
-    cell: {type: String, required: true},
+    phone: {type: String},
+    cell: {type: String},
     picture: {
-        large: {type: String, required: true},
-        medium: {type: String, required: true},
-        thumbnail: {type: String, required: true}
+        large: {type: String},
+        medium: {type: String},
+        thumbnail: {type: String}
     },
 
 })

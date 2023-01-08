@@ -13,14 +13,15 @@ const UserDetails = () => {
 
   let getData = async () => {
     try {
-      let res = await fetch("https://jsonplaceholder.typicode.com/users");
+      let res = await fetch("http://localhost:8080/user");
       let data = await res.json();
-      setData(data);
+      console.log('data:', data)
+      setData([...data]);
     } catch (err) {
       console.log("err: ", err);
     }
   };
-  console.log("data:", data);
+  // console.log("data:", data);
 
   return (
     <div>
@@ -28,8 +29,8 @@ const UserDetails = () => {
         return (
           <div key={item.id} className={style.container}>
             <div>
-              {/* <img src={item.picture.large} alt="" /> */}
-              <h2>{item.name}</h2>
+              <img src={item.picture.large} alt="user profile" />
+              <h2>{item.name.title} {item.name.first} {item.name.last}</h2>
               <p>{item.email}</p>
             </div>
           </div>

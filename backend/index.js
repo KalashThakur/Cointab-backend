@@ -4,6 +4,7 @@ require('dotenv').config();
 const {connection} = require('./Config/db')
 const userRoute = require('./Routes/user.routes.js')
 const PORT = process.env.PORT || 8080; 
+const cors = require("cors")
 // https://randomuser.me/api/
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(express.json())
 app.get("/", (req,res) => {
     res.send("Welcome")
 });
-
+app.use(cors())
 app.use("/user", userRoute)
 
 
