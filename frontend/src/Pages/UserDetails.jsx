@@ -24,15 +24,13 @@ const UserDetails = () => {
   // console.log("data:", data);
 
   return (
-    <div>
-      {data?.map((item) => {
+    <div className={style.container}>
+      {data?.map((item) => {    
         return (
-          <div key={item.id} className={style.container}>
-            <div>
+          <div key={item.id} >
               <img src={item.picture.large} alt="user profile" />
               <h2>{item.name.title} {item.name.first} {item.name.last}</h2>
               <p>{item.email}</p>
-            </div>
           </div>
         )
       })}
